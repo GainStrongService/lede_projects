@@ -1,4 +1,4 @@
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
-
+echo timer > /sys/class/leds/minibox_v3\:status/trigger
 exit 0

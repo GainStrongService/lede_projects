@@ -540,6 +540,9 @@ get_status_led() {
 	wlr8100)
 		status_led="sitecom:amber:status"
 		;;
+	MiniBox-V3)
+		status_led="minibox_v3:status"
+		;;
 	esac
 }
 
