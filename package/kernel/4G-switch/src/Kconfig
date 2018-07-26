@@ -1,0 +1,5 @@
+config 4G-MODULE  
+    tristate "4G-MODULE"  
+    help  
+    This is a example, for debugging kernel model.
+    If unsure, say N.  
