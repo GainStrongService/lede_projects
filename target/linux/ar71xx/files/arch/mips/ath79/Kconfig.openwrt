@@ -2347,3 +2347,18 @@ config ATH79_MACH_FRITZ300E
 	select ATH79_DEV_GPIO_BUTTONS
 	select ATH79_DEV_LEDS_GPIO
 	select ATH79_DEV_M25P80
+
+config  ATH79_MACH_OOLITEBOX
+	bool "OOLITEBOX board"
+	select SOC_QCA953X
+	select HW_HAS_PCI
+	select ATH79_DEV_AP9X_PCI if PCI
+	select ATH79_DEV_ETH
+	select ATH79_DEV_GPIO_BUTTONS
+	select ATH79_DEV_LEDS_GPIO
+	select ATH79_DEV_M25P80
+	select ATH79_DEV_USB
+	select ATH79_DEV_WMAC
+	help
+	say 'Y' here if you want your kernel to support the
+	OOLITEBOX board
