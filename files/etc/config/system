@@ -1,0 +1,47 @@
+config system
+        option hostname 'OpenWrt'
+        option timezone 'UTC'
+        option ttylogin '0'
+        option log_size '64'
+        option urandom_seed '0'
+
+config timeserver 'ntp'
+        option enabled '1'
+        option enable_server '0'
+        list server '0.openwrt.pool.ntp.org'
+        list server '1.openwrt.pool.ntp.org'
+        list server '2.openwrt.pool.ntp.org'
+        list server '3.openwrt.pool.ntp.org'
+
+config led
+        option default '0'
+        option name 'wifi0_2g'
+        option sysfs 'ceilingap_v1:wifi0'
+        option trigger 'netdev' 
+        option dev 'wlan0'
+        option mode 'link rx'
+
+config led
+        option default '0'
+        option name 'wifi1_5g'
+        option sysfs 'ceilingap_v1:wifi1'
+        option trigger 'netdev'
+        option dev 'wlan1'
+        option mode 'link rx'
+
+config led
+        option default '0'
+        option name 'system'
+        option sysfs 'ceilingap_v1:system'
+        option trigger 'timer'
+        option delayon '1000'
+        option delayoff '1000'
+
+config led
+        option default '0'
+        option name 'wan'
+        option sysfs 'ceilingap_v1:wlan'
+        option trigger 'netdev'
+        option dev 'eth0'
+        option mode 'link tx rx'
+
