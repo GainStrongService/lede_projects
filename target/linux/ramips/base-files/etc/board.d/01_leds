@@ -437,6 +437,10 @@ u7628-01-128M-16M)
 	set_usb_led "u7628-01:green:usb"
 	set_wifi_led "u7628-01:green:wlan"
 	;;
+oolite-v4.0-16M)
+	ucidef_set_led_netdev "eth" "ETH" "oolite-v4:green:eth" "eth0"
+	set_wifi_led "oolite-v4:green:status"
+	;;
 vocore-8M|\
 vocore-16M)
 	ucidef_set_led_netdev "eth" "ETH" "vocore:orange:eth" "eth0"
