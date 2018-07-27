@@ -24,6 +24,7 @@ ramips_setup_rt3x5x_vlans()
 		fi
 	done
 	ucidef_add_switch "rt305x" $lanports $wanports "6t@eth0"
+#	ucidef_set_interfaces_lan_wan "eth0.1" "eth0.2"
 }
 
 ramips_setup_interfaces()
@@ -170,6 +171,10 @@ ramips_setup_interfaces()
 	rt-ac51u)
 		ucidef_add_switch "switch0" \
 			"0:wan" "1:lan" "2:lan" "3:lan" "4:lan" "6t@eth0"
+		;;
+	oolite-v3.1-16M)
+		ucidef_add_switch "switch0" \
+			"0:lan" "1:lan" "2:lan" "3:lan" "4:wan" "6t@eth0"
 		;;
 	rt-n15|\
 	wl-351)
@@ -549,6 +554,10 @@ ramips_setup_macs()
 		;;
 	wlr-6000)
 		wan_mac=$(macaddr_add "$(mtd_get_mac_binary factory 32772)" 2)
+		;;
+	oolite-v3.1-16M)
+		wan_mac=$(mtd_get_mac_binary factory 4)
+		lan_mac=$(mtd_get_mac_binary factory 40)
 		;;
 	*)
 		lan_mac=$(cat /sys/class/net/eth0/address)
