@@ -2347,3 +2347,19 @@ config ATH79_MACH_FRITZ300E
 	select ATH79_DEV_GPIO_BUTTONS
 	select ATH79_DEV_LEDS_GPIO
 	select ATH79_DEV_M25P80
+
+config ATH79_MACH_OOLITE_V5R
+	bool "Oolite V5R board"
+	select SOC_QCA953X
+	select ATH79_DEV_GPIO_BUTTONS
+	select ATH79_DEV_LEDS_GPIO
+	select ATH79_DEV_SPI
+	select ATH79_DEV_USB
+	select ATH79_DEV_WMAC
+	select ATH79_DEV_ETH
+	select ATH79_DEV_M25P80
+        help
+	Say 'Y' here if you want your kernel to support the
+	Oolite V5R board.
+
+
