@@ -216,6 +216,7 @@ platform_check_image() {
 	zbt-we826-32M|\
 	zbt-wg2626|\
 	zbt-wg3526-16M|\
+	oolite-7620-16mb|\
 	zbt-wg3526-32M|\
 	zbt-wr8305rt|\
 	zorlik,zl5900v2|\

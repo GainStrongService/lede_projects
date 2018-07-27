@@ -645,3 +645,15 @@ define Device/zte-q7
   DEVICE_TITLE := ZTE Q7
 endef
 TARGET_DEVICES += zte-q7
+
+define Device/oolite-7620-16mb
+  DTS := Oolite-7620-16MB
+  DEVICE_TITLE := MediaTek MT7620a Oolite-7620-16MB
+  DEVICE_PACKAGES := luci alsa-utils madplay-alsa kmod-usb-ohci kmod-usb-uhci kmod-usb-storage kmod-usb2 \
+        kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 kmod-fs-ext4 \
+        kmod-fs-ntfs kmod-fs-vfat kmod-block2mtd badblocks usbutils \
+        block-mount luci kmod-ath10k ath10k-firmware-qca9887 \
+        ath10k-firmware-qca9888 ath10k-firmware-qca988x  kmod-mt76 kmod-sdhci-mt7620 \
+	kmod-usb-serial kmod-usb-serial-option comgt luci-proto-3g
+endef
+TARGET_DEVICES += oolite-7620-16mb

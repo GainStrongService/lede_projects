@@ -724,6 +724,9 @@ ramips_board_detect() {
 	*"YK1")
 		name="youku-yk1"
 		;;
+	*"Oolite-7620-16MB")
+		name="oolite-7620-16mb"
+		;;
 	esac
 
 	# use generic board detect if no name is set
