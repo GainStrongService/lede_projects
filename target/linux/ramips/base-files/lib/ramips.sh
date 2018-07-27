@@ -385,6 +385,9 @@ ramips_board_detect() {
 	*"OY-0001")
 		name="oy-0001"
 		;;
+	*"Oolite-v3 8MB")
+		name="oolite-v3-8M"
+		;;
 	*"PBR-D1")
 		name="pbr-d1"
 		;;

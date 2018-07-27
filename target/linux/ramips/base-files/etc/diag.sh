@@ -268,6 +268,9 @@ get_status_led() {
 	v22rw-2x2)
 		status_led="$boardname:green:security"
 		;;
+	oolite-v3-8M)
+		status_led= "$boardname:orange:wifi"
+		;;
 	vocore-8M|\
 	vocore-16M)
 		status_led="vocore:green:status"

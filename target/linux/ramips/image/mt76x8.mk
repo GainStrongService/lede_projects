@@ -218,6 +218,22 @@ define Device/u7628-01-128M-16M
 endef
 TARGET_DEVICES += u7628-01-128M-16M
 
+define Device/oolite-v3-8M
+  DTS := OOLITE-V3-8M
+  IMAGE_SIZE := $(ralink_default_fw_size_8M)
+  DEVICE_TITLE := Oolite-v3(8M)
+  DEVICE_PACKAGES := kmod-usb-core kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport \
+	mountd \
+	uhttpd rpcd rpcd-mod-iwinfo \
+	luci luci-theme-openwrt luci-app-mjpg-streamer luci-app-samba luci-lib-json \
+	rpcd-mod-rpcsys cgi-io avrdude spi-tools \
+	kmod-fs-vfat kmod-i2c-core kmod-i2c-ralink \
+	kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 \
+	maccalc shairport_mmap reg \
+	kmod-sdhci-mt7620 kmod-usb-storage
+endef
+TARGET_DEVICES += oolite-v3-8M
+
 define Device/vocore2
   DTS := VOCORE2
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
