@@ -61,6 +61,7 @@
 #define HWID_NEXX_WT1520	0x30353332
 #define HWID_NEXX_WT3020	0x30323033
 #define HWID_A5_V11		0x32473352
+#define HWID_CPE9344		0x3C000109
 
 /* Recognized XOR obfuscation keys */
 #define KEY_HAME		0
@@ -135,7 +136,10 @@ static struct flash_layout layouts[] = {
 	}, {
 		.id		= "8M",
 		.fw_max_len	= 0x7c0000,
-	}, {
+	},{
+		.id		= "16M",
+		.fw_max_len	= 0xf80000,
+	},{
 		/* terminating entry */
 	}
 };
@@ -231,7 +235,12 @@ static struct board_info boards[] = {
                 .hw_id          = HWID_NEXX_WT3020,
                 .layout_id      = "8M",
                 .key            = KEY_NEXX_2,
-        }, {
+        },{
+		.id		= "CPE9344",
+		.hw_id		= HWID_CPE9344,
+		.layout_id	= "16M",
+		.key            = KEY_NEXX_1
+	}, {
 
 
 
