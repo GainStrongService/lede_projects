@@ -724,6 +724,15 @@ ramips_board_detect() {
 	*"YK1")
 		name="youku-yk1"
 		;;
+        *"Oolite-v8 8MB")
+                name="oolite-v8-8mb"
+                ;;
+        *"Oolite-v8 16MB")
+                name="oolite-v8-16mb"
+                ;;
+        *"Oolite-v8 32MB")
+                name="oolite-v8-32mb"
+		;;
 	esac
 
 	# use generic board detect if no name is set

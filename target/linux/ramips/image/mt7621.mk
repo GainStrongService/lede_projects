@@ -405,6 +405,50 @@ define Device/zbt-wg3526-32M
 endef
 TARGET_DEVICES += zbt-wg3526-32M
 
+define Device/oolite-v8-8mb
+  DTS := Oolite-v8-8MB
+  IMAGE_SIZE := $(ralink_default_fw_size_8M)
+  DEVICE_TITLE := MediaTek MT7621 Oolite-v8-8MB
+  DEVICE_PACKAGES := luci alsa-utils madplay-alsa kmod-usb-ohci kmod-usb-uhci kmod-usb-storage kmod-usb2 \
+	kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 kmod-fs-ext4 \
+	kmod-fs-ntfs kmod-fs-vfat kmod-block2mtd badblocks usbutils pciutils \
+	block-mount luci kmod-ath10k ath10k-firmware-qca9887 \
+	ath10k-firmware-qca9888 ath10k-firmware-qca988x  kmod-mt76 kmod-sdhci-mt7620 kmod-sdhci komd-mmc \
+	kmod-usb-serial kmod-usb-serial-option comgt luci-proto-3g kmod-usb3  \
+	kmod-ata-core kmod-ath9k kmod-usb-storage-extras kmod-ata-ahci
+endef
+TARGET_DEVICES += oolite-v8-8mb
+
+
+define Device/oolite-v8-16mb
+  DTS := Oolite-v8-16MB
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := MediaTek MT7621 Oolite-v8-16MB
+  DEVICE_PACKAGES := luci alsa-utils madplay-alsa kmod-usb-ohci kmod-usb-uhci kmod-usb-storage kmod-usb2 \
+        kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 kmod-fs-ext4 \
+        kmod-fs-ntfs kmod-fs-vfat kmod-block2mtd badblocks usbutils pciutils \
+        block-mount luci kmod-ath10k ath10k-firmware-qca9887 \
+        ath10k-firmware-qca9888 ath10k-firmware-qca988x  kmod-mt76 kmod-sdhci-mt7620 kmod-sdhci komd-mmc \
+        kmod-usb-serial kmod-usb-serial-option comgt luci-proto-3g kmod-usb3 \
+	kmod-ata-core kmod-ath9k kmod-usb-storage-extras kmod-ata-ahci
+endef
+
+TARGET_DEVICES += oolite-v8-16mb
+
+define Device/oolite-v8-32mb
+  DTS := Oolite-v8-32MB
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
+  DEVICE_TITLE := MediaTek MT7621 Oolite-v8-32MB
+  DEVICE_PACKAGES := luci alsa-utils madplay-alsa kmod-usb-ohci kmod-usb-uhci kmod-usb-storage kmod-usb2 \
+        kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 kmod-fs-ext4 \
+        kmod-fs-ntfs kmod-fs-vfat kmod-block2mtd badblocks usbutils pciutils \
+        block-mount luci kmod-ath10k ath10k-firmware-qca9887 \
+        ath10k-firmware-qca9888 ath10k-firmware-qca988x  kmod-mt76 kmod-sdhci-mt7620 kmod-sdhci komd-mmc \
+        kmod-usb-serial kmod-usb-serial-option comgt luci-proto-3g kmod-usb3 \
+	kmod-ata-core kmod-ath9k kmod-usb-storage-extras kmod-ata-ahci 
+endef
+TARGET_DEVICES += oolite-v8-32mb
+
 # FIXME: is this still needed?
 define Image/Prepare
 #define Build/Compile
