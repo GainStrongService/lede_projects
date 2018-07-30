@@ -901,6 +901,9 @@ ar71xx_board_detect() {
 	*"Oolite V5.2-Dev")
 		name="oolite-v5.2-dev"
 		;;
+	*"Oolite V9")
+		name="oolite-v9"
+		;;
 	*"PB42")
 		name="pb42"
 		;;
