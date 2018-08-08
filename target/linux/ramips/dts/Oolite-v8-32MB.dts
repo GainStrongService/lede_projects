@@ -14,7 +14,7 @@
 		bootargs = "console=ttyS0,57600";
 	};
 
-	sdhci@10130000 {
+	sdhci@1E130000 {
 		status = "okay";
 //              mediatek,cd-low;
 //              mediatek,cd-poll;
@@ -97,7 +97,6 @@
 	ethernet@1e100000 {
 		mtd-mac-address = <&factory 0x04>;
 	};
-
 	gpio-keys-polled {
 		compatible = "gpio-keys-polled";
 		#address-cells = <1>;
