@@ -1,0 +1,55 @@
+Index: linux-4.9.91/drivers/usb/serial/option.c
+===================================================================
+--- linux-4.9.91.orig/drivers/usb/serial/option.c	2018-08-08 13:42:26.354639186 +0800
++++ linux-4.9.91/drivers/usb/serial/option.c	2018-08-08 14:30:45.578624426 +0800
+@@ -2178,6 +2178,12 @@
+ 	struct usb_interface_descriptor *iface_desc;
+ 	const struct option_blacklist_info *blacklist;
+ 	struct usb_wwan_intf_private *data;
++	
++	if (serial->dev->descriptor.idVendor == HUAWEI_VENDOR_ID) {
++		if ( 0 != (serial->dev->config->desc.bmAttributes & 0x20)){
++			usb_enable_autosuspend(serial->dev);
++		}
++	}	
+ 
+ 	data = kzalloc(sizeof(struct usb_wwan_intf_private), GFP_KERNEL);
+ 	if (!data)
+Index: linux-4.9.91/drivers/usb/serial/usb_wwan.c
+===================================================================
+--- linux-4.9.91.orig/drivers/usb/serial/usb_wwan.c	2018-08-08 13:42:26.354639186 +0800
++++ linux-4.9.91/drivers/usb/serial/usb_wwan.c	2018-08-08 14:40:50.650621345 +0800
+@@ -35,6 +35,8 @@
+ #include <linux/usb/serial.h>
+ #include <linux/serial.h>
+ #include "usb-wwan.h"
++#define HW_bcdUSB 0x0110
++#define HUAWEI_VENDOR_ID 0x12d1
+ 
+ /*
+  * Generate DTR/RTS signals on the port using the SET_CONTROL_LINE_STATE request
+@@ -222,7 +224,7 @@
+ 	struct urb *this_urb = NULL;	/* spurious */
+ 	int err;
+ 	unsigned long flags;
+-
++	struct usb_host_endpoint *ep;
+ 	portdata = usb_get_serial_port_data(port);
+ 	intfdata = usb_get_serial_data(port->serial);
+ 
+@@ -256,6 +258,15 @@
+ 		memcpy(this_urb->transfer_buffer, buf, todo);
+ 		this_urb->transfer_buffer_length = todo;
+ 
++		if((HUAWEI_VENDOR_ID == port->serial->dev->descriptor.idVendor)
++			&& (HW_bcdUSB != port->serial->dev->descriptor.bcdUSB)){
++			ep = usb_pipe_endpoint(this_urb->dev, this_urb->pipe);
++			if(ep && (0 != this_urb->transfer_buffer_length)
++			&& (0 == this_urb->transfer_buffer_length % ep->desc.wMaxPacketSize)){
++			this_urb->transfer_flags |= URB_ZERO_PACKET;
++			}
++		}
++
+ 		spin_lock_irqsave(&intfdata->susp_lock, flags);
+ 		if (intfdata->suspended) {
+ 			usb_anchor_urb(this_urb, &portdata->delayed);
