@@ -550,11 +550,11 @@ ar71xx_setup_interfaces()
 			"0@eth0" "1:lan:1" "2:lan:2" "3:lan:3" "4:lan:4" "5:wan"
 		;;
 	oolitebox)
-		ucidef_set_interfaces_3g "ppp0"
-		ucidef_set_interfaces_lan_wan "eth1" "eth0"
+		
+		ucidef_set_interfaces_lan_wan "eth0.1" "eth1"
 		ucidef_add_switch "switch0" \
-			"5@eth0" "0:lan:5" "1:lan:4" "2:lan:3" "3:lan:2" "4:lan:1"
-		;;
+			"0@eth0" "1:lan:4" "2:lan:3" "3:lan:2" "4:lan:1"
+        ;;
 	*)
 		ucidef_set_interfaces_lan_wan "eth0" "eth1"
 		;;
