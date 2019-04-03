@@ -135,27 +135,29 @@ static void __init oolitebox_setup(void)
 
 
     ath79_register_wmac(art + OOLITEBOX_WMAC_CALDATA_OFFSET, NULL);
-    ath79_setup_ar933x_phy4_switch(false, false);
 
     ath79_register_mdio(0, 0x0);
+    ath79_register_mdio(1, 0x0);
 
-    ath79_switch_data.phy4_mii_en = 1;
-    ath79_switch_data.phy_poll_mask |= BIT(4);
-
-    /* LAN */
-    ath79_eth1_data.duplex = DUPLEX_FULL;
-    ath79_eth1_data.phy_if_mode = PHY_INTERFACE_MODE_GMII;
     ath79_init_mac(ath79_eth1_data.mac_addr, art + OOLITEBOX_MAC1_OFFSET, 0);
-    ath79_register_eth(1);
 
-    /* WAN */
-    ath79_eth0_data.duplex = DUPLEX_FULL;
-    ath79_eth0_data.phy_if_mode = PHY_INTERFACE_MODE_MII;
-    ath79_eth0_data.phy_mask = BIT(4);
-    ath79_eth0_data.speed = SPEED_100;
     ath79_init_mac(ath79_eth0_data.mac_addr, art + OOLITEBOX_MAC0_OFFSET, 0);
-    ath79_register_eth(0);
     
+
+    /* WAN port */
+        ath79_eth0_data.phy_if_mode = PHY_INTERFACE_MODE_MII;
+        ath79_eth0_data.speed = SPEED_100;
+        ath79_eth0_data.duplex = DUPLEX_FULL;
+        ath79_eth0_data.phy_mask = BIT(4);
+        ath79_register_eth(0);
+
+        /* LAN ports */
+        ath79_eth1_data.phy_if_mode = PHY_INTERFACE_MODE_GMII;
+        ath79_eth1_data.speed = SPEED_1000;
+        ath79_eth1_data.duplex = DUPLEX_FULL;
+        ath79_switch_data.phy_poll_mask |= BIT(4);
+        ath79_switch_data.phy4_mii_en = 1;
+        ath79_register_eth(1);
 }
     MIPS_MACHINE(ATH79_MACH_OOLITEBOX, "OOLITEBOX", "OOLITEBOX board",
     oolitebox_setup);
