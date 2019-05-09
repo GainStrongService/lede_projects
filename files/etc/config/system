@@ -1,3 +1,4 @@
+
 config system
         option hostname 'OpenWrt'
         option timezone 'UTC'
@@ -14,64 +15,10 @@ config timeserver 'ntp'
         list server '3.openwrt.pool.ntp.org'
 
 config led
-        option name 'system'
+        option default '0'
+        option name 'status'
         option sysfs 'oolitebox:system'
-        option trigger 'none'
-        option default '1'
-
-config led
-        option default '0'
-        option sysfs 'oolitebox:wifi1'
-        option trigger 'netdev'
-        option mode 'link tx rx'
-        option dev 'wlan1'
-        option name 'wifi1'
-
-config led
-        option default '0'
-        option name 'wifi0'
-        option sysfs 'oolitebox:wifi0'
-        option trigger 'netdev'
-        option dev 'wlan0'
-        option mode 'link tx rx'
-
-config led
-        option default '0'
-        option name 'lan1'
-        option sysfs 'oolitebox:lan1'
-        option trigger 'netdev'
-        option dev 'eth1'
-        option mode 'link tx rx'
-
-config led
-        option default '0'
-        option name 'lan2'
-        option sysfs 'oolitebox:lan2'
-        option trigger 'netdev'
-        option dev 'eth1'
-        option mode 'link tx rx'
-
-config led                            
-        option default '0'            
-        option name 'lan3'            
-        option sysfs 'oolitebox:lan3' 
-        option trigger 'netdev'      
-        option dev 'eth1'            
-        option mode 'link tx rx'     
-                                     
-config led                           
-        option default '0'           
-        option name 'lan4'           
-        option sysfs 'oolitebox:lan4'
-        option trigger 'netdev'      
-        option dev 'eth1'            
-        option mode 'link tx rx'     
-                                     
-config led                           
-        option name 'wan'            
-        option sysfs 'oolitebox:wan' 
-        option default '0'           
-        option trigger 'netdev'      
-        option dev 'eth0'            
-        option mode 'link tx rx'
+        option trigger 'timer'
+        option delayon '500'
+        option delayoff '500'
 

@@ -34,6 +34,7 @@
 #include "dev-wmac.h"
 #include "machtypes.h"
 #include "pci.h"
+#include "eeprom.h"
 #define OOLITEBOX_GPIO_BTN_RST                   17
 #define OOLITEBOX_KEYS_POLL_INTERVAL             20 /* msecs */
 #define OOLITEBOX_MAC0_OFFSET                    0
@@ -116,6 +117,20 @@ static void __init oolitebox_gpio_led_setup(void)
 	__raw_writel(new_func, QCA9531_GPIO_FUNC);
 	iounmap(QCA9531_GPIO_FUNC);
 
+    ath79_gpio_direction_select(OOLITEBOX_GPIO_LED_WAN, true);
+    ath79_gpio_direction_select(OOLITEBOX_GPIO_LED_LAN1, true);
+    ath79_gpio_direction_select(OOLITEBOX_GPIO_LED_LAN2, true);
+    ath79_gpio_direction_select(OOLITEBOX_GPIO_LED_LAN3, true);
+    ath79_gpio_direction_select(OOLITEBOX_GPIO_LED_LAN4, true);
+
+    ath79_gpio_output_select(OOLITEBOX_GPIO_LED_WAN,QCA953X_GPIO_OUT_MUX_LED_LINK5);
+    ath79_gpio_output_select(OOLITEBOX_GPIO_LED_LAN1,QCA953X_GPIO_OUT_MUX_LED_LINK1);
+    ath79_gpio_output_select(OOLITEBOX_GPIO_LED_LAN2,QCA953X_GPIO_OUT_MUX_LED_LINK2);
+    ath79_gpio_output_select(OOLITEBOX_GPIO_LED_LAN3,QCA953X_GPIO_OUT_MUX_LED_LINK3);
+    ath79_gpio_output_select(OOLITEBOX_GPIO_LED_LAN4,QCA953X_GPIO_OUT_MUX_LED_LINK4);
+
+
+
 	ath79_register_leds_gpio(-1,ARRAY_SIZE(oolitebox_leds_gpio),oolitebox_leds_gpio);
 	ath79_register_gpio_keys_polled(-1,OOLITEBOX_KEYS_POLL_INTERVAL,
 			ARRAY_SIZE(oolitebox_gpio_keys),oolitebox_gpio_keys);
@@ -123,17 +138,18 @@ static void __init oolitebox_gpio_led_setup(void)
 
 static void __init oolitebox_setup(void)
 {
-    u8 *art = (u8 *) KSEG1ADDR(0x1fff0000);
+   // u8 *art = (u8 *) KSEG1ADDR(0x1fff0000);
+    u8 *art = ath79_get_eeprom();
     ath79_register_m25p80(&oolitebox_flash_data);
 
  	oolitebox_gpio_led_setup();
-
+    ath79_gpio_function_enable(AR934X_GPIO_FUNC_JTAG_DISABLE);
     ath79_register_usb();
 
     ath79_register_pci();
 
 
-
+    ath79_wmac_set_led_pin(OOLITEBOX_GPIO_LED_WLAN);
     ath79_register_wmac(art + OOLITEBOX_WMAC_CALDATA_OFFSET, NULL);
 
     ath79_register_mdio(0, 0x0);

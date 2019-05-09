@@ -1,5 +1,5 @@
 # Put your custom commands here that should be executed once
 # the system init finished. By default this file does nothing.
-chmod +x /etc/switch.sh
-.//etc/switch.sh &
+#chmod +x /etc/switch.sh
+#.//etc/switch.sh &
 exit 0

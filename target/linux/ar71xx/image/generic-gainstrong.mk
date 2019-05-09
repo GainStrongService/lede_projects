@@ -1,7 +1,7 @@
 DEVICE_VARS += TPLINK_HWID TPLINK_HWREV TPLINK_FLASHLAYOUT TPLINK_HEADER_VERSION TPLINK_BOARD_NAME
 
 define Device/oolitebox
-    $(Device/tplink-16mlzma)
+    $(Device/tplink-32mlzma)
     DEVICE_TITLE := GainStrong OoliteBox
     DEVICE_PACKAGES := kmod-usb-ohci kmod-usb-uhci kmod-usb-storage kmod-usb2 \
         kmod-nls-cp437 kmod-nls-iso8859-1 kmod-nls-utf8 kmod-fs-ext4 \
