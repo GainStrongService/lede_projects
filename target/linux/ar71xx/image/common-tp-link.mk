@@ -93,3 +93,10 @@ define Device/tplink-16mlzma
   TPLINK_FLASHLAYOUT := 16Mlzma
   IMAGE_SIZE := 15872k
 endef
+
+define Device/tplink-32mlzma
+  $(Device/tplink)
+  TPLINK_FLASHLAYOUT := 32Mlzma
+  IMAGE_SIZE := 32256k
+endef
+
